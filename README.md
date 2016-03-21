@@ -11,44 +11,37 @@ workflow.
 
 ## Installation
 
-### On RHEL/Fedora machine
-
-#### Install with a bash script
-
-* To install the application, simply run `install_xovis.sh`
-
-		./scripts/install_xovis.sh
-
 #### Install manually
 
 * Install project dependencies
 
-		yum install python-pip git couchdb nodejs npm"
-
-* Install Kanso framework
-
-		npm install -g kanso
+		yum install python-pip git couchdb nodejs npm
 
 * Clone this repository in the destination of your choice
 
-		git clone https://github.com/martasd/xovis.git
+		git clone https://github.com/andi-g/xovis.git
 
-* Install the application into a new database
-	
-		cd xovis
-		kanso createdb http://localhost:5984/xovis
-		kanso push http://localhost:5984/xovis
+* Install angular, couchapp, d3 by issuing the following command
+    in the root directory of this repo.
+
+        cd xovis
+		npm install 
+
+* If you haven't already, start your couchdb instance on your machine and 
+    push the xovis couchapp into a existing database
+
+		cd xovis # assuming you are still in the root directory of the repo
+		../node_modules/.bin/couchapp push app.js http://localhost:5984/<your_couchdb>
+    If you have already set up a couchdb admin user, please use its credentials:
+
+        ../node_modules/.bin/couchapp push app.js http://username:password@localhost:5984/<your_couchdb>
+
+    If you are installing into a new database you need to create the database first:
+
+        curl -X PUT http://andi:aidA1941@localhost:5984/xovis
 
 	where `xovis` is the name of the new database.
 
-#### Alternative install (without requiring NodeJS)
-
-* If you prefer to avoid having to install Node JS, you can also install from a
-database dump:
-
-		./scripts/install_xovis_dbdump.sh
-
-	*Note:* Downloads of database dump file.
 
 ### Load existing deployment data into the database
 
@@ -79,9 +72,7 @@ database dump:
 
 ## Visualize
 
-* Open up a browser and go to
-
-		http://localhost:5984/<deployment-name>/_design/xovis-couchapp/index.html
+* Open up a browser and open the index.html file in this repo. 
 
 **Enjoy the beautiful view!**
 

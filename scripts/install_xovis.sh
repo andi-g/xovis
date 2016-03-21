@@ -10,14 +10,12 @@
 
 function online_install {
 
-DEPS="python-pip git couchdb nodejs npm"
+DEPS="curl python-pip git couchdb nodejs npm"
 XOVIS_REPO_DEST=$REPO_DEST/xovis
 mkdir -p $REPO_DEST
 
 echo "Installing project dependencies."
 yum install -y $DEPS
-
-npm install -g kanso
 
 systemctl enable couchdb
 systemctl start couchdb
@@ -26,20 +24,22 @@ echo "Couch configured to start on boot"
 if [ ! -d "$XOVIS_REPO_DEST" ]
 then
 	echo "Cloning xovis repository."
-	git clone https://github.com/martasd/xovis.git $XOVIS_REPO_DEST
+	git clone https://github.com/andi-g/xovis.git $XOVIS_REPO_DEST
+    cd $XOVIS_REPO_DEST
+    npm install 
 fi
 
-DBS=$(kanso listdb)
+DBS=$(curl -X GET $DB_HOST/_all_dbs)
 if [[ "$DBS" == *$DB_NAME* ]]
 then
 	echo "Db $DB_NAME already exists"
 else
 	echo "Creating empty database for the app."
-	kanso createdb $DB_URL
+	curl -X PUT $DB_URL
 fi
 
 echo "Loading the application into new database $DB_NAME."
-kanso push $XOVIS_REPO_DEST $DB_URL
+./node_modules/.bin/couchapp push xovis/app.js $DB_URL
 
 echo "Installing Python dependencies."
 pip install -r $XOVIS_REPO_DEST/process_stats/requirements.txt

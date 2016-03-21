@@ -1,32 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
     <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>XO: Quest for Data</title>
-
-	<link type="text/css" href="css/highcharts.css" rel="stylesheet" />
-	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
-	<script type="text/javascript" src="modules.js"></script>
-	<script type="text/javascript">
-	    var main = require('lib/main');
-	    main.init();
-	</script>
+        <link rel="stylesheet" href="./css/xovis.css">
+	    <script src="./node_modules/angular/angular.min.js"></script>
+        <script src="./node_modules/d3/d3.min.js"></script>
+	    <script src='./config.js'></script>
+	    <script src='./lib/accessors.js'></script>
+	    <script src='./lib/charts.js'></script>
+        <script src='./lib/viz.js'></script>
     </head>
-
-    <body>
-	<div id="header">
-	    <h1>OLE Nepal: Quest for Data</h1>
-	</div>
-	<div id="container">
-	    <div id="left-container">
-		<div id="buttons">
-		</div>
-	    </div>
-	    <div id="right-container">
-	    </div>
-	    <div id="center-container">
-	    </div>
-	</div>
+    <body ng-app='xovis_viz' ng-controller='XovisVizCtrl as main'> 
+        <xovis-top-menu viztype="activity" linkurl="index.html"></xovis-top-menu>
+        <h1>{{main.project_name}}</h1>
+        <xovis-bar-chart viztype="activity" title="# activities"></xovis-bar-chart>
+        <div class="spacer"></div>
+        <xovis-bar-chart viztype="files" title="# files"></xovis-bar-chart>
+        <div class="spacer"></div>
+        <xovis-line-chart viztype="timeofday" title="time of day"></xovis-line-chart>
+        <div class="spacer"></div>
+        <xovis-line-chart viztype="months" title="# activities by month"></xovis-line-chart>
+        <div class="spacer"></div>
     </body>
 </html>

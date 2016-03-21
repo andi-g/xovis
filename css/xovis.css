@@ -1,0 +1,43 @@
+.charttitle {
+    font: 32px sans-serif;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.axis text, text.barlabel {
+  font: 12px sans-serif;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.spacer {
+    height: 50px;
+}
+
+.line {
+    fill: none;
+    stroke-width: 2px;
+}
+
+.dot {
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+text.menuitem {
+  font: 18px sans-serif;
+}
+
+body {
+    margin: 25px 25px 50px 50px;
+}
+
+.projectmenulabel {
+    font: 18px sans-serif;
+}
