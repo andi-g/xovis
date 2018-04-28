@@ -38,7 +38,7 @@ workflow.
 
     If you are installing into a new database you need to create the database first:
 
-        curl -X PUT http://andi:aidA1941@localhost:5984/xovis
+        curl -X PUT http://username:password@localhost:5984/xovis
 
 	where `xovis` is the name of the new database.
 
