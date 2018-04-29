@@ -3,16 +3,19 @@
     "version": "0.0.1",
     "description": "Vizualization of XO journal data",
     "license": "GPL-3.0",
-    "contributors": [{
-        "name": "Andreas Gros",
-        "email": "andigros72@gmail.com"
-    }, {
-        "name": "Martin Abente",
-        "email": "martin.abente.lahaye@gmail.com"
-    }],
+    "contributors": [
+        {
+            "name": "Andreas Gros",
+            "email": "andigros72@gmail.com"
+        },
+        {
+            "name": "Martin Abente",
+            "email": "martin.abente.lahaye@gmail.com"
+        }
+    ],
     "dependencies": {
         "couchapp": ">= 0.0.0",
         "d3": ">= 3.5.0",
-        "angular": ">= 1.4.8"
+        "angular": "1.x.x"
     }
 }

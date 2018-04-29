@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="./css/xovis.css">
 	    <script src="./node_modules/angular/angular.min.js"></script>
-        <script src="./node_modules/d3/d3.min.js"></script>
+        <script src="./node_modules/d3/dist/d3.min.js"></script>
 	    <script src='./config.js'></script>
 	    <script src='./lib/accessors.js'></script>
 	    <script src='./lib/charts.js'></script>
@@ -11,7 +11,7 @@
     </head>
     <body ng-app='xovis_viz' ng-controller='XovisVizCtrl as main'> 
         <xovis-top-menu viztype="activity" linkurl="index.html"></xovis-top-menu>
-        <h1>{{main.project_name}}</h1>
+        <h1>{{main.project}}</h1>
         <xovis-bar-chart viztype="activity" title="# activities"></xovis-bar-chart>
         <div class="spacer"></div>
         <xovis-bar-chart viztype="files" title="# files"></xovis-bar-chart>
