@@ -36,8 +36,15 @@ text.menuitem {
 
 body {
     margin: 25px 25px 50px 50px;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 48px;
 }
 
 .projectmenulabel {
     font: 18px sans-serif;
 }
+
+
