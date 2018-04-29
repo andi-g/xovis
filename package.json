@@ -3,6 +3,9 @@
     "version": "0.0.1",
     "description": "Vizualization of XO journal data",
     "license": "GPL-3.0",
+    "scripts": {
+        "start": "python -m SimpleHTTPServer 8000"
+    },
     "contributors": [
         {
             "name": "Andreas Gros",

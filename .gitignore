@@ -2,3 +2,4 @@
 kanso.watchr
 lib/*test.js
 dataflow.dia
+node_modules

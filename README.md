@@ -9,45 +9,56 @@ data is called XOvis, a Couch App built using [Kanso](htttp://kan.so)
 framework. See dataflow.svg for a schematic representation of the entire
 workflow.
 
+## Prerequisites
+
+- CouchDB 1.7
+- Python 2.7
+- Node.js 8
+
+Install project dependencies for a Fedora system.
+
+    yum install python-pip git couchdb nodejs npm
+
+
 ## Installation
 
-#### Install manually
+* Create a couchdb database.
 
-* Install project dependencies
+      curl -X PUT http://127.0.0.1:5984/xovis
 
-		yum install python-pip git couchdb nodejs npm
+  _Note: if you use a different database name, you'll need to set that in your
+  `config.js`._
 
-* Clone this repository in the destination of your choice
+* Clone this repository in the destination of your choice.
 
-		git clone https://github.com/andi-g/xovis.git
+      git clone https://github.com/andi-g/xovis.git
+      cd xovis
 
-* Install angular, couchapp, d3 by issuing the following command
-    in the root directory of this repo.
+* Install JavaScript dependencies by issuing the following command
+  in the root directory of this repo.
 
-        cd xovis
-		npm install 
+      npm install
 
-* If you haven't already, start your couchdb instance on your machine and 
-    push the xovis couchapp into a existing database
+* Push the xovis couchapp into your database.
 
-		cd xovis # assuming you are still in the root directory of the repo
-		../node_modules/.bin/couchapp push app.js http://localhost:5984/<your_couchdb>
-    If you have already set up a couchdb admin user, please use its credentials:
+      ./node_modules/.bin/couchapp push xovis/app.js http://localhost:5984/xovis
 
-        ../node_modules/.bin/couchapp push app.js http://username:password@localhost:5984/<your_couchdb>
+  _Note: If you have already set up a couchdb admin user, please use the credentials._
 
-    If you are installing into a new database you need to create the database first:
+      ./node_modules/.bin/couchapp push xovis/app.js http://username:password@localhost:5984/xovis
 
-        curl -X PUT http://username:password@localhost:5984/xovis
+* Start the app.
 
-	where `xovis` is the name of the new database.
+      npm start
+
+  Open your browser to [localhost:8000](http://localhost:8000).
 
 
 ### Load existing deployment data into the database
 
 * Insert XO Journal backup data into the same database using a Python script
 
-		pip install -r requirements.txt
+		pip install -r process_stats/requirements.txt
 		./process_stats/process_journal_stats.py dbinsert xovis --deployment <deployment-name>
 		
 	*Note:*
@@ -72,7 +83,13 @@ workflow.
 
 ## Visualize
 
-* Open up a browser and open the index.html file in this repo. 
+* Open up a browser and open the index.html file in this repo.
+
+      open index.html
+
+  or
+
+      xdg-open index.html
 
 **Enjoy the beautiful view!**
 
